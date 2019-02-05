@@ -11,10 +11,12 @@
 #
 #################################################################
 
-FROM alpine:3.3
-MAINTAINER Jonathan Short <jonathan.short@sendgrid.com>
+FROM alpine:3.6
+MAINTAINER Tom Alexander <talexander@oncamino.com>
 
-RUN apk add --update rsyslog rsyslog-tls && rm -rf /var/cache/apk/*
+RUN rm -rf /var/cache/apk/* && apk update && \
+    apk add --update rsyslog rsyslog-tls && \
+    rm -rf /var/cache/apk/*
 
 ADD run.sh /tmp/run.sh
 RUN chmod +x /tmp/run.sh
